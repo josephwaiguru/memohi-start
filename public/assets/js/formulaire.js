@@ -34,7 +34,7 @@ function changeBox() {
 function getCarBrand() {
     const value = document.getElementById("car-brand").value;
     $.ajax({
-        url: "http://localhost:8000/retrieve-car-brand-data",
+        url: window.location.hostname + "/retrieve-car-brand-data",
         type: 'GET',
         data: { value: value },
         success: function (result) {

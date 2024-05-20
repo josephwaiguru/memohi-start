@@ -30,7 +30,19 @@
                     </div>
                 </div>
                 <div class="summary-information">
+                    <div class="version-information" style="margin-bottom:20px;margin-top:20px">
+                        <span class="status">Username</span>
+                        <span class="value" id="name">Feburary 2019</span>
+                    </div>
                     <div class="version-information" style="margin-bottom:20px">
+                        <span class="status">Email</span>
+                        <span class="value" id="email">Feburary 2019</span>
+                    </div>
+                    <div class="version-information" style="margin-bottom:20px">
+                        <span class="status">PhoneNumber</span>
+                        <span class="value" id="number">Feburary 2019</span>
+                    </div>
+                    <div class="version-information" style="margin-bottom:20px;">
                         <span class="status">Brand</span>
                         <span class="value" id="brandvalue">PEUGEOT</span>
                     </div>
@@ -46,17 +58,13 @@
                         <span class="status">Registration Date</span>
                         <span class="value" id="date">Feburary 2019</span>
                     </div>
-                    <div class="version-information" style="margin-bottom:20px">
-                        <span class="status">Username</span>
-                        <span class="value" id="name">Feburary 2019</span>
+                    <div class="version-information"style="margin-bottom:20px">
+                        <span class="status">Energy</span>
+                        <span class="value" id="energy">Feburary 2019</span>
                     </div>
-                    <div class="version-information" style="margin-bottom:20px">
-                        <span class="status">Email</span>
-                        <span class="value" id="email">Feburary 2019</span>
-                    </div>
-                    <div class="version-information">
-                        <span class="status">PhoneNumber</span>
-                        <span class="value" id="number">Feburary 2019</span>
+                    <div class="version-information"style="margin-bottom:20px">
+                        <span class="status">Range</span>
+                        <span class="value" id="range">Feburary 2019</span>
                     </div>
                 </div>
                 <div class="main-container-footer" style="margin-top:40px !important">
@@ -75,6 +83,8 @@
         const user_fullname = localStorage.getItem("user_fullname");
         const user_email = localStorage.getItem("user_email");
         const user_phonenumber = localStorage.getItem("user_phonenumber");
+        const car_energy = localStorage.getItem("car_energy");
+        const car_range = localStorage.getItem("car_range");
         const dateStr = new Date;
         const date = new Date(dateStr);
         const options = { year: 'numeric', month: 'long' };
@@ -87,6 +97,8 @@
         document.getElementById("name").innerHTML = user_fullname;
         document.getElementById("email").innerHTML = user_email;
         document.getElementById("number").innerHTML = user_phonenumber;
+        document.getElementById("energy").innerHTML = car_energy;
+        document.getElementById("range").innerHTML = car_range;
     </script>
 </body>
 

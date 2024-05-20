@@ -97,7 +97,7 @@
         const brand_id = localStorage.getItem('car_brand_id')
 
         $.ajax({
-            url: "http://localhost:8000/retrieve-car-model-data",
+            url: "/retrieve-car-model-data",
             type: 'GET',
             data: { value1: brand_id },
             success: function (result) {

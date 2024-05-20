@@ -36,7 +36,7 @@ function changeBox() {
 function getCarBrand() {
     const value = document.getElementById("car-brand").value;
     $.ajax({
-        url: "http://localhost:8000/retrieve-car-brand-data",
+        url: "/retrieve-car-brand-data",
         type: 'GET',
         data: { value: value },
         success: function (result) {
@@ -104,7 +104,7 @@ function getCarModel() {
     const username = localStorage.getItem('car_brand_id')
 
     $.ajax({
-        url: "http://localhost:8000/retrieve-car-model-data",
+        url: "/retrieve-car-model-data",
         type: 'GET',
         data: { value: value, value1: username },
         success: function (result) {
@@ -161,7 +161,7 @@ function findCarGeneration() {
     const value = document.getElementById("car-generation").value;
     console.log(value);
     $.ajax({
-        url: "http://localhost:8000/retrieve-car-generation-data",
+        url: "/retrieve-car-generation-data",
         type: 'GET',
         data: { value: car_model, value1: value },
         success: function (result) {
@@ -293,7 +293,7 @@ function submit() {
     const car_range = localStorage.getItem("car_range");
     const date = localStorage.getItem("registration_date");
     $.ajax({
-        url: "http://localhost:8000/submit-data",
+        url: "/submit-data",
         type: 'GET',
         data: {
             fullname: fullname, email: email, phonenumber: phonenumber, car_brand: car_brand, car_model: car_model, car_generation: car_generation,

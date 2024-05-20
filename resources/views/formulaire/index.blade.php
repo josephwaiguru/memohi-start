@@ -2,8 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/formulaire-header.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -42,7 +44,7 @@
                                 <span class="text-main">And even as a young driver!</span>
                             </div>
                         </div>
-                        <div class="container-body-column">
+                        <div class="container-body-column responsive-column">
                             <img style="width:80px" src="{{asset('assets/images/car-leasing.svg')}}"></img>
                             <div class="column-text">
                                 <span class="text-title">Loan vehicle</span>
@@ -57,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="main-container-footer">
+                    <div class="main-container-footer responsive-index-footer">
                         <div class="next-button" onclick="toFindVehicle()">
                             Next
                         </div>

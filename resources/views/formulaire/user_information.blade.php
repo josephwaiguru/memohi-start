@@ -2,6 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/formulaire-header.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -16,7 +18,7 @@
             <div style="height:100%;width:90%;background-color:#70efdd;transition:2s" class="progress-bar"></div>
         </div>
         <main class="main-body">
-            <div class="back-button" onclick="toSummary()">
+            <div class="back-button" onclick="toRange()">
                 <span class="arrow">
                     <i class="fa fa-angle-left"></i>
                 </span>
@@ -24,7 +26,7 @@
             </div>
             <div class="main-container">
                 <div class="second" id="second">
-                    <div class="main-container-header" style="padding-top:35px">
+                    <div class="main-container-header user-info-header" style="padding-top:35px">
                         <span>Check</span>
                         <span class="bold-font">account</span>
                     </div>
@@ -56,7 +58,7 @@
                     </div>
                 </div>
                 <div class="main-container-footer disabled-container-footer">
-                    <div class="next-button" onclick="toCongradulation()">
+                    <div class="next-button" onclick="setUserInformation()">
                         Next
                     </div>
                 </div>

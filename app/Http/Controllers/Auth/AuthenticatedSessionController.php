@@ -51,7 +51,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/admin/login');
     }
 
     public function setLanguage(Request $request)

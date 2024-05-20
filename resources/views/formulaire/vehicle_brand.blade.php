@@ -2,6 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/formulaire-header.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{asset('assets/js/formulaire.js')}}"></script>
@@ -22,7 +24,7 @@
         </div>
         <div class="main-container">
             <div class="second" id="second">
-                <div class="main-container-header" style="padding-top:35px">
+                <div class="main-container-header brand-header" style="padding-top:35px">
                     <span>Vehicle</span>
                     <span class="bold-font"> brand</span>
                 </div>
@@ -41,14 +43,18 @@
                 <div class="brand-adv-pan" id="carbrandpan">
                     <div class="adv-title">Most common brands</div>
                     <div class="adv-main">
-                        <img src="{{asset('assets/images/renault.svg')}}"></img>
-                        <img src="{{asset('assets/images/peugeot.svg')}}"></img>
-                        <img src="{{asset('assets/images/citroen.svg')}}"></img>
-                        <img src="{{asset('assets/images/volkswagen.svg')}}"></img>
-                        <img src="{{asset('assets/images/tesla.svg')}}"></img>
-                        <img src="{{asset('assets/images/mercedes.svg')}}"></img>
-                        <img src="{{asset('assets/images/audi.svg')}}"></img>
-                        <img src="{{asset('assets/images/bmw.svg')}}"></img>
+                        <img src="{{asset('assets/images/renault.svg')}}"
+                            onclick="setBrandValue('Renault','147')"></img>
+                        <img src="{{asset('assets/images/peugeot.svg')}}"
+                            onclick="setBrandValue('Peugeot','135')"></img>
+                        <img src="{{asset('assets/images/citroen.svg')}}" onclick="setBrandValue('Citroen','37')"></img>
+                        <img src="{{asset('assets/images/volkswagen.svg')}}"
+                            onclick="setBrandValue('Volkswagen','184')"></img>
+                        <img src="{{asset('assets/images/tesla.svg')}}" onclick="setBrandValue('Tesla','172')"></img>
+                        <img src="{{asset('assets/images/mercedes.svg')}}"
+                            onclick="setBrandValue('Mercedes-Benz','116')"></img>
+                        <img src="{{asset('assets/images/audi.svg')}}" onclick="setBrandValue('Audi','10')"></img>
+                        <img src="{{asset('assets/images/bmw.svg')}}" onclick="setBrandValue('BMW','18')"></img>
                     </div>
                 </div>
                 <div class="main-container-footer disabled-container-footer" id="disablefooter">

@@ -2,6 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/formulaire-header.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -44,7 +46,7 @@
                     </div>
                 </div>
                 <div class="tw-h-full tw-full-size">
-                    <input placeholder="Ex: 208" id="car-generation" onkeyup="findCarGeneration()" />
+                    <input placeholder="Ex: 1.2 TDI" id="car-generation" onkeyup="findCarGeneration()" />
                     <div class="cross-btn" id="cross" onclick="removeGenerationValue()"><i class='fa fa-xmark'></i>
                     </div>
                     <div class="car-list-pan" id="cargenerationlist">

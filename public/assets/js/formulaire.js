@@ -25,7 +25,9 @@ function toSummary() {
 function toUserInformation() {
     location.href = "/formulaire/user-information"
 }
-
+function toCongradulation() {
+    location.href = "/formulaire/congradulation"
+}
 function changeBox() {
     document.getElementById("check").style.display = "none";
     document.getElementById("check-box").style.display = "flex";
@@ -34,7 +36,7 @@ function changeBox() {
 function getCarBrand() {
     const value = document.getElementById("car-brand").value;
     $.ajax({
-        url:  "/retrieve-car-brand-data",
+        url: "http://localhost:8000/retrieve-car-brand-data",
         type: 'GET',
         data: { value: value },
         success: function (result) {
@@ -71,6 +73,20 @@ function getCarBrand() {
         }
     });
 }
+function setBrandValue(brand_name, brand_id) {
+    const input = document.getElementById('car-brand');
+    localStorage.setItem('car_brand', brand_name);
+    localStorage.setItem("car_brand_id", brand_id)
+    input.value = brand_name;
+    input.setAttribute("readonly", true)
+    document.getElementById("carbrandpan").style.display = "none"
+    document.getElementById("cross").style.display = "flex"
+    document.getElementById("disablefooter").classList.remove("disabled-container-footer");
+    document.getElementById("disablebuton").classList.remove("disabled-button");
+    document.getElementById("disablebuton").addEventListener('click', () => {
+        location.href = "/formulaire/vehicle-model"
+    })
+}
 function removeValue() {
     const input = document.getElementById('car-brand');
     input.removeAttribute("readonly")
@@ -80,6 +96,7 @@ function removeValue() {
     document.getElementById("disablebuton").classList.add("disabled-button");
     document.getElementById("cross").style.display = "none"
     localStorage.removeItem('car_brand');
+    localStorage.removeItem('car_brand_id');
 
 }
 function getCarModel() {
@@ -87,15 +104,16 @@ function getCarModel() {
     const username = localStorage.getItem('car_brand_id')
 
     $.ajax({
-        url: "/retrieve-car-model-data",
+        url: "http://localhost:8000/retrieve-car-model-data",
         type: 'GET',
         data: { value: value, value1: username },
         success: function (result) {
             const dropdownpan = document.getElementById("carmodellist");
             dropdownpan.innerHTML = ''
+            const car_model = document.getElementById("model_list");
+            car_model.innerHTML=''
             result.map(function (item, index) {
                 const firstdivlist = document.createElement("div");
-
                 firstdivlist.textContent = item.name;
                 dropdownpan.appendChild(firstdivlist)
                 firstdivlist.addEventListener('click', () => {
@@ -113,6 +131,7 @@ function getCarModel() {
                     })
                 });
             })
+
             if (result.length == 0) {
                 dropdownpan.style.display = "none"
             } else {
@@ -131,6 +150,8 @@ function removeModelValue() {
     document.getElementById("disablebuton").classList.add("disabled-button");
     document.getElementById("cross").style.display = "none"
     localStorage.removeItem('car_model');
+    localStorage.removeItem('car_model_id');
+    document.getElementById("carmodelpan").style.display="flex"
 
 }
 
@@ -140,7 +161,7 @@ function findCarGeneration() {
     const value = document.getElementById("car-generation").value;
     console.log(value);
     $.ajax({
-        url: "/retrieve-car-generation-data",
+        url: "http://localhost:8000/retrieve-car-generation-data",
         type: 'GET',
         data: { value: car_model, value1: value },
         success: function (result) {
@@ -218,7 +239,7 @@ function setKMS() {
     document.getElementById("disablebutton").classList.remove("disabled-button");
     input.setAttribute("readonly", true)
     document.getElementById("disablebutton").addEventListener('click', () => {
-        location.href = "/formulaire/summary";
+        location.href = "/formulaire/user-information";
     })
 }
 function removeKMSValue() {
@@ -243,14 +264,14 @@ function setEmail() {
 function setPhoneNumber() {
     phonenumber = document.getElementById('phonenumber').value
 }
-function toCongradulation() {
+function setUserInformation() {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (fullname && email && phonenumber) {
         if (!emailRegex.test(email)) {
             alert("Please enter a valid email address.")
             return false;
         }
-        location.href = "/formulaire/congradulation"
+        location.href = "/formulaire/summary"
         localStorage.setItem("user_fullname", fullname);
         localStorage.setItem('user_email', email)
         localStorage.setItem('user_phonenumber', phonenumber)
@@ -272,7 +293,7 @@ function submit() {
     const car_range = localStorage.getItem("car_range");
     const date = localStorage.getItem("registration_date");
     $.ajax({
-        url: "/submit-data",
+        url: "http://localhost:8000/submit-data",
         type: 'GET',
         data: {
             fullname: fullname, email: email, phonenumber: phonenumber, car_brand: car_brand, car_model: car_model, car_generation: car_generation,

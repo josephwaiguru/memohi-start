@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 //Route::post('/register', [RegisteredUserController::class, 'store'])
 //                ->middleware('guest');
 
-Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])
     ->middleware(['guest','setLanguageFront'])
     ->name('login');
 
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+Route::post('/admin/login', [AuthenticatedSessionController::class, 'store'])
     ->middleware(['guest','setLanguageFront']);
 
 Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])

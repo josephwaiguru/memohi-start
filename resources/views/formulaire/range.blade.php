@@ -2,6 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/formulaire-header.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -56,7 +58,7 @@
             document.getElementById("car-kms").value = car_range;
             document.getElementById("cross").style.display = "flex"
             document.getElementById("disablebutton").addEventListener('click', () => {
-                location.href = "/formulaire/summary";
+                location.href = "/formulaire/user-information";
             })
         } else {
         }

@@ -35,18 +35,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['xss'])->group(function () {
+    // Route::get('/', function () {
+    //     if (Auth::check()) {
+    //         if (Auth::user()->hasRole('admin')) {
+    //             return Redirect::to(getDashboardURL());
+    //         }
+
+    //         return Redirect::to(getClientDashboardURL());
+    //     }
+
+    //     return redirect(route('welcome'));
+    // });
     Route::get('/', function () {
-        if (Auth::check()) {
-            if (Auth::user()->hasRole('admin')) {
-                return Redirect::to(getDashboardURL());
-            }
-
-            return Redirect::to(getClientDashboardURL());
-        }
-
-        return redirect(route('login'));
+        return view('welcome');
     });
-
+    
     // client reset password routes
     Route::get('/client-onboard/{id}', [ClientNewPasswordController::class, 'create'])->name('client.password.reset')->middleware('setLanguageFront');
     Route::post('/client-reset-password', [ClientNewPasswordController::class, 'store'])->name('client.password.update')->middleware('setLanguageFront');

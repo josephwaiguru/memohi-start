@@ -88,6 +88,14 @@
                                     <span>{{ __('messages.payments') }}</span>
                                 </a>
                             </a>
+                               <a class="py-0 fs-4 dropdown-item" href="{{ route('manage_formulaire.index') }}">
+                                <a class="nav-link px-4" href="{{ route('manage_formulaire.index') }}">
+                                    <span class="dropdown-icon me-3">
+                                        <i class="fa-solid fas fa-list pe-2"></i>
+                                    </span>
+                                    <span>{{ __('messages.formulaires') }}</span>
+                                </a>
+                            </a>
                         </div>
                     </div>
                 @endif

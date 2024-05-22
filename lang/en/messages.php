@@ -26,6 +26,7 @@ return [
     'general' => 'General',
     'taxes' => 'Taxes',
     'transactions' => 'Transactions',
+    'formulaires'=>'Formulaires',
     'categories' => 'Categories',
     'invoice_templates' => 'Invoice Templates',
     'payments' => 'Payments',

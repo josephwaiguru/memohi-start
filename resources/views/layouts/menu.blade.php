@@ -107,7 +107,14 @@
             <span class="aside-menu-title">{{ __('messages.invoice_templates') }}</span>
         </a>
     </li>
-
+    <li class="nav-item {{ Request::is('admin/formulaire*') ? 'active' : '' }}">
+        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('manage_formulaire.index') }}">
+            <span class="menu-icon">
+                <i class="fa-solid fas fa-list pe-2"></i>
+            </span>
+            <span class="aside-menu-title">{{ __('messages.formulaires') }}</span>
+        </a>
+    </li>
     <li
         class="nav-item {{ Request::is('admin/settings*', 'admin/currencies*', 'admin/payment-gateway*', 'admin/invoice-settings*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('settings.edit') }}">

@@ -93,6 +93,7 @@
     <a class="nav-link p-0 {{ Request::is('admin/template-setting*') ? 'active' : '' }}"
         href="{{ route('invoiceTemplate') }}">{{ __('messages.invoice_templates') }}</a>
 </li>
+
 @role('admin')
     <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/payments*') ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/payments*') ? 'active' : '' }}"
@@ -123,5 +124,10 @@
         class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/settings*', 'admin/currencies*', 'admin/payment-gateway*', 'admin/invoice-settings') ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/invoice-settings*') ? 'active' : '' }}"
             href="{{ route('settings.invoice-settings') }}">{{ __('messages.setting.invoice_settings') }}</a>
+    </li>
+    <li
+        class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/formulaire*') ? 'd-none' : '' }}">
+        <a class="nav-link p-0 {{ Request::is('admin/formulaire*') ? 'active' : '' }}"
+            href="{{ route('manage_formulaire.index') }}">{{ __('messages.formulaires') }}</a>
     </li>
 @endrole

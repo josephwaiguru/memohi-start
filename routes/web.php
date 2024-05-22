@@ -8,6 +8,7 @@ use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\InvoiceTemplateController;
+use App\Http\Controllers\Manage_formulaireController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentGatewayController;
@@ -241,7 +242,7 @@ Route::prefix('admin')->middleware(['auth', 'xss', 'role:admin'])->group(functio
 
     //Payment
     Route::get('transactions', [PaymentController::class, 'index'])->name('transactions.index');
-
+    Route::get("formulaire",[Manage_formulaireController::class,'index'])->name('manage_formulaire.index');
     Route::resource('payments', AdminPaymentController::class);
     Route::get(
         'get-current-date-format',

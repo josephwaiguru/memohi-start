@@ -142,6 +142,20 @@ function getCarModel() {
         }
     });
 }
+function setModel(car_model,model_id){
+    console.log(car_model,model_id)
+    document.getElementById('car-model').value=car_model;
+    localStorage.setItem('car_model', car_model);
+    localStorage.setItem('car_model_id', model_id)
+    document.getElementById('carmodellist').style.display = "none"
+    document.getElementById("carmodelpan").style.display = "none"
+    document.getElementById("cross").style.display = "flex"
+    document.getElementById("disablefooter").classList.remove("disabled-container-footer");
+    document.getElementById("disablebuton").classList.remove("disabled-button");
+    document.getElementById("disablebuton").addEventListener('click', () => {
+        location.href = "/formulaire/vehicle-version"
+    })
+}
 function removeModelValue() {
     const input = document.getElementById('car-model');
     input.removeAttribute("readonly")
@@ -265,10 +279,16 @@ function setPhoneNumber() {
     phonenumber = document.getElementById('phonenumber').value
 }
 function setUserInformation() {
+    
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var phonePattern = /^\+(?:[0-9] ?){6,14}[0-9]$/;
     if (fullname && email && phonenumber) {
         if (!emailRegex.test(email)) {
             alert("Please enter a valid email address.")
+            return false;
+        }
+        if(!phonePattern.test(phonenumber)){
+            alert("Invalid phone number")
             return false;
         }
         location.href = "/formulaire/summary"
@@ -313,6 +333,7 @@ function submit() {
                 localStorage.removeItem("car_brand_id");
                 localStorage.removeItem("car_model_id");
                 alert("successfully submitted");
+                
                 setTimeout(() => {
                     location.href = "/formulaire"
                 }, 1500);

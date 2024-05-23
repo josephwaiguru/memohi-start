@@ -11507,6 +11507,106 @@ function renderData(id) {
   });
 }
 })();
+//This is the code for formulaire changeand delete//
+listenClick(".formulaire-edit-btn", function (event) {
+    var formulaireId = $(event.currentTarget).attr("data-id");
+    renderFormulaireData(formulaireId);
+    console.log("sdfsdfsdfsdfs")
+  });
+  function renderFormulaireData(id) {
+    $.ajax({
+      url:"/admin/find_formulaire_data/"+id,
+      type: "GET",
+      success: function success(result) {
+        console.log(result)
+        if (result) {
+          $("#editFullName").val(result.fullname);
+          $("#editFormulaireId").val(result.id);
+          $("#editEmail").val(result.email);
+          $("#editPhoneNumber").val(result.phonenumber);
+          $("#editCar_Brand").val(result.car_brand);
+          $("#editCar_Model").val(result.car_model);
+          $("#editCar_Generation").val(result.car_generation);
+          $("#editCar_Energy").val(result.car_energy);
+          $("#editCar_Range").val(result.car_range);
+          $("#editFormulaireModal").appendTo("body").modal("show");
+          console.log("sdf")
+          return;
+        }
+      },
+      error: function error(result) {
+        displayErrorMessage(result.responseJSON.message);
+      },
+
+    });
+  }
+  })();
+  listenSubmit("#editFormulaireForm", function (event) {
+    event.preventDefault();
+    var id = $("#editFormulaireId").val();
+    var emailInput = document.getElementById("editEmail");
+    var email = emailInput.value.trim();
+    var phoneInput = document.getElementById("editPhoneNumber");
+    var phone = phoneInput.value.trim();
+    var testEmail = /\S+@\S+\.\S+/;
+    var testPhoneNumber = /^\+(?:[0-9] ?){6,14}[0-9]$/;
+    if(!testEmail.test(email)){
+        displayErrorMessage("Invalid Email Address");
+        return;
+    }
+    if(!testPhoneNumber.test(phone)){
+        displayErrorMessage("Invalid Phone Number");
+        return false;
+
+    }
+    $.ajax({
+      url:"/admin/formulaire_update/"+id,
+      type: "put",
+      data: $(this).serialize(),
+      success: function success(result) {
+        if (result) {
+          displaySuccessMessage(result.message);
+          $("#editFormulaireModal").modal("hide");
+        //   Livewire.dispatch("refreshDatatable");
+        //   Livewire.dispatch("resetPageTable");
+        location.reload()
+        }
+      },
+      error: function error(result) {
+        displayErrorMessage(result.responseJSON.message);
+      },
+    });
+  });
+  function listenClick(selector, callback) {
+    $('.formulaire-delete-btn').on('click', selector, function(event) {
+        callback(event);
+    });
+}
+
+
+// Usage
+listenClick(".formulaire-delete-btn", function(event) {
+    var categoryId = $(event.currentTarget).attr("data-id");
+    deleteItem('/admin/formulaire_delete/' + categoryId, Lang.get("formualire"));
+    setTimeout(() => {
+        location.reload()
+    }, 2000);
+});
+
+
+
+
+
+
+//formulaire end
+
+
+
+
+
+
+
+
 
 // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
 (() => {
@@ -15199,5 +15299,5 @@ listenClick('#editSaveClientQuote', function (event) {
 });
 })();
 
-/******/ })()
+/******/
 ;

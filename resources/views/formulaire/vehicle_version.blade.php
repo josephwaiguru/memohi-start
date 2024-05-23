@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="previous-status">
-                        <div class="is-round-help-button" onclick="tovehiclebrand()">
+                        <div class="is-round-help-button" onclick="toVehicleBrand()">
                             <span class="tw-text-sm" id="car-brand"></span>
                         </div>
                         <div class="is-round-help-button" onclick="toVehicleModel()">

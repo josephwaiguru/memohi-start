@@ -13,6 +13,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentGatewayController;
 use App\Http\Controllers\PaymentQrCodeController;
+use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\Auth\ClientNewPasswordController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FormulaireController;
@@ -50,7 +51,7 @@ Route::middleware(['xss'])->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    
+
     // client reset password routes
     Route::get('/client-onboard/{id}', [ClientNewPasswordController::class, 'create'])->name('client.password.reset')->middleware('setLanguageFront');
     Route::post('/client-reset-password', [ClientNewPasswordController::class, 'store'])->name('client.password.update')->middleware('setLanguageFront');
@@ -139,69 +140,6 @@ Route::prefix('admin')->middleware(['auth', 'xss', 'role:admin'])->group(functio
         'destroy' => 'category.destroy',
     ]);
 
-//formulaire route
-    // Route::resource("formulaire",FormulaireController::class)->names([
-    //     "index" => "formulaire.index",
-    //     "find-vehicle" =>"formulaire.find_vehicle"
-    // ]);
-    // Route::get("find-vehicle",[FormulaireController::class,"findvehicle"])->name("formulaire.find-vehicle");
-    // Route::get('/formulaire', function () {
-    //     return view('formulaire.index');
-    // });
-    // Route::get('/formulaire', [App\Http\Controllers\FormulaireController::class, 'index']);
-    // Route::get('/formulaire/find-vehicle', [App\Http\Controllers\FormulaireController::class, 'find_vehicle']);
-    // Route::get('/formulaire/vehicle-brand', [App\Http\Controllers\FormulaireController::class, 'vehicle_brand']);
-    // Route::get('/formulaire/vehicle-model', [App\Http\Controllers\FormulaireController::class, 'vehicle_model']);
-    // Route::get('/formulaire/vehicle-version', [App\Http\Controllers\FormulaireController::class, 'vehicle_version']);
-    // Route::get('/formulaire/car-energy', [App\Http\Controllers\FormulaireController::class, 'car_energy']);
-    // Route::get('/formulaire/range', [App\Http\Controllers\FormulaireController::class, 'range']);
-    // Route::get('/formulaire/summary', [App\Http\Controllers\FormulaireController::class, 'summary']);
-    // Route::get('/formulaire/user-information', [App\Http\Controllers\FormulaireController::class, 'user_information']);
-    // Route::get('/formulaire/congradulation', [App\Http\Controllers\FormulaireController::class, 'congradulation']);
-
-
-    // // Route::get('/retrieve-car-brand-data','FormulaireController@retrieveCarBrandData');
-    // Route::get('retrieve-car-brand-data', [FormulaireController::class, 'search'])->name('retrieveCarBrandData');
-    // Route::get('retrieve-car-model-data', [FormulaireController::class, 'search_model'])->name('retrieveCarModelData');
-    // Route::get('retrieve-car-generation-data', [FormulaireController::class, 'search_generation'])->name('retrieveCarGenerationData');
-    // Route::get('submit-data', [FormulaireController::class, 'submit_data'])->name('submitData');
-    // Route::get('/formulaire', function () {
-    //     // Logic to retrieve all users
-    // })->name('formulaire.index');    
-    
-    // Route::get('/formulaire/find-vehicle', function () {
-    //     return view('formulaire.find_vehicle');
-    // })->name('formulaire.find_vehicle');
-    // Route::get('/formulaire/vehicle-brand', function () {
-    //     return view('formulaire.vehicle_brand');
-    // })->name('formulaire.vehicle_brand');
-    // Route::get('/formulaire/vehicle-model', function () {
-    //     return view('formulaire.vehicle_model');
-    // })->name('formulaire.vehicle_model');
-    // Route::get('/formulaire/vehicle-version', function () {
-    //     return view('formulaire.vehicle_version');
-    // })->name('formulaire.vehicle_version');
-    // Route::get('/formulaire/car-energy', function () {
-    //     return view('formulaire.car_energy');
-    // })->name('formulaire.car_energy');
-    // Route::get('/formulaire/range', function () {
-    //     return view('formulaire.range');
-    // })->name('formulaire.range');
-    // Route::get('/formulaire/summary', function () {
-    //     return view('formulaire.summary');
-    // })->name('formulaire.summary');
-    // Route::get('/formulaire/user-information', function () {
-    //     return view('formulaire.user_information');
-    // })->name('formulaire.user_information');
-    // Route::get('/formulaire/congradulation', function () {
-    //     return view('formulaire.congradulation');
-    // })->name('formulaire.congradulation');
-
-
-
-
-    
-
 
     //Product Route
     Route::resource('products', ProductController::class);
@@ -242,7 +180,14 @@ Route::prefix('admin')->middleware(['auth', 'xss', 'role:admin'])->group(functio
 
     //Payment
     Route::get('transactions', [PaymentController::class, 'index'])->name('transactions.index');
-    Route::get("formulaire",[Manage_formulaireController::class,'index'])->name('manage_formulaire.index');
+    Route::get("formulaire", [Manage_formulaireController::class, 'index'])->name('manage_formulaire.index');
+    Route::get('/find_formulaire_data/{id}', [Manage_formulaireController::class, 'findData'])->name('findData');
+    Route::put('/formulaire_update/{id}', [Manage_formulaireController::class, 'update'])->name('update');
+    Route::delete('/formulaire_delete/{id}', [Manage_formulaireController::class, 'delete'])->name('delete');
+    Route::get('/formulaire_list', [Manage_formulaireController::class, 'list'])->name('list');
+
+
+
     Route::resource('payments', AdminPaymentController::class);
     Route::get(
         'get-current-date-format',
@@ -415,11 +360,11 @@ Route::middleware(['auth', 'xss'])->group(function () {
     Route::post('send-invoice-on-whatsapp', [InvoiceController::class, 'sendInvoiceOnWhatsapp'])->name('send.invoice.on.whatsapp');
 });
 
-Route::get('lang-js', function(){
+Route::get('lang-js', function () {
     Artisan::call('lang:js');
 
     return redirect(route('login'));
 });
 
-require __DIR__.'/auth.php';
-require __DIR__.'/upgrade.php';
+require __DIR__ . '/auth.php';
+require __DIR__ . '/upgrade.php';

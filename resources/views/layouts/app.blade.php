@@ -35,6 +35,7 @@
     </script>
     <script src="{{ asset('assets/js/third-party.js') }}"></script>
     <script src="{{ asset('messages.js') }}"></script>
+    <script src="{{asset("assets/js/formulaire.js")}}"></script>
     <script data-turbo-eval="false">
         let sweetAlertIcon = "{{ asset('images/remove.png') }}";
         let decimalsSeparator = "{{ getSettingValue('decimal_separator') }}";

@@ -24,6 +24,14 @@
                             class="shortcut-menu dropdown-menu px-3 py-3" data-popper-reference-hidden="false"
                             data-popper-escaped="false" data-popper-placement="bottom-start"
                             style="position: absolute; inset: 0px auto auto 0px; transform: translate(0px, 44px);">
+                            <a class="py-0 fs-4 dropdown-item" href="{{ route('manage_formulaire.index') }}">
+                                <a class="nav-link px-4" href="{{ route('manage_formulaire.index') }}">
+                                    <span class="dropdown-icon me-3">
+                                        <i class="fa-solid fas fa-list pe-2"></i>
+                                    </span>
+                                    <span>{{ __('messages.formulaires') }}</span>
+                                </a>
+                            </a>
                             <a class="py-0 fs-4 dropdown-item" href="{{ route('invoices.index') }}">
                                 <a class="nav-link px-4" href="{{ route('invoices.index') }}">
                                     <span class="dropdown-icon me-4">
@@ -88,14 +96,7 @@
                                     <span>{{ __('messages.payments') }}</span>
                                 </a>
                             </a>
-                               <a class="py-0 fs-4 dropdown-item" href="{{ route('manage_formulaire.index') }}">
-                                <a class="nav-link px-4" href="{{ route('manage_formulaire.index') }}">
-                                    <span class="dropdown-icon me-3">
-                                        <i class="fa-solid fas fa-list pe-2"></i>
-                                    </span>
-                                    <span>{{ __('messages.formulaires') }}</span>
-                                </a>
-                            </a>
+
                         </div>
                     </div>
                 @endif

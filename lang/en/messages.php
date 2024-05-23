@@ -26,7 +26,7 @@ return [
     'general' => 'General',
     'taxes' => 'Taxes',
     'transactions' => 'Transactions',
-    'formulaires'=>'Formulaires',
+    'formulaires'=>'Formulaire',
     'categories' => 'Categories',
     'invoice_templates' => 'Invoice Templates',
     'payments' => 'Payments',
@@ -153,6 +153,15 @@ return [
         'all_rights_reserved' => 'All rights reserved',
         'hello' => 'Hello',
         'scan_to_pay' => 'Scan To Pay',
+        'fullname'=>'FullName',
+        'phonenumber'=>'PhoneNumber',
+        'car_brand'=>'Car Brand',
+        'car_model'=>'Car Model',
+        'car_generation'=>'Car Generation',
+        'car_energy'=>'Car Energy',
+        'car_range'=>'Car Range',
+
+
     ],
 
     'user' => [

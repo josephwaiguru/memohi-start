@@ -2,7 +2,60 @@
 
 All notable changes to `laravel-livewire-tables` will be documented in this file
 
-## [v3.2.0] - 2023-01-04
+## [v3.2.7] - 2024-06-05
+### Bug Fixes
+- Ensure HTML Columns return HTML correctly by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1737
+
+## [v3.2.6] - 2024-06-05
+### New Features
+- Add configurable wire:model for filters by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1699
+- Customisable Model paths for Make command by @marvoh in https://github.com/rappasoft/laravel-livewire-tables/pull/1714
+- Add HTML Support for LinkColumn by @codecreeper in https://github.com/rappasoft/laravel-livewire-tables/pull/1728
+
+### Bug Fixes
+- Fix error with DateColumn when empty by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1726
+
+### Tweaks
+- Migrate to PHPUnit Attributes rather than Doc Comments by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1727
+- Remove broken test by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1719
+
+## [v3.2.5] - 2024-04-30
+### New Features
+- Add setConfigurableArea by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1706
+- Add User prompt for missing inputs by @achyutkneupane in https://github.com/rappasoft/laravel-livewire-tables/pull/1681
+
+### Bug Fixes
+- UI patch: toolbar fix for reordering by @itsLeonB in https://github.com/rappasoft/laravel-livewire-tables/pull/1690
+
+### Tweaks
+- Adjust Workflow behaviour for PCOV by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1706
+- Updated nl language by @Jerimu in https://github.com/rappasoft/laravel-livewire-tables/pull/1695
+- Updated nl language by @Jerimu in https://github.com/rappasoft/laravel-livewire-tables/pull/1694
+
+## [v3.2.4] - 2024-03-01
+### Bug Fixes
+- Collapsing Columns fix when multiple tables are displayed on a page by @lrljoe
+
+## [v3.2.3] - 2024-03-01
+### New Features
+- Add capability to customise colors/styling on the Pagination Per-Page Dropdown by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1677
+
+### Docs
+- Amend Lifecycle Hooks document to use "public" rather than "protected" methods
+
+## [v3.2.2] - 2024-02-29
+### New Features
+- Add setDefaultPerPage by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1671
+
+## [v3.2.1] - 2024-02-24
+### Bug Fixes
+- Fix collapsing columns not respecting view point collapse points by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1665
+
+### Tweaks
+- Migrate "updated" Search and FilterComponents calls to WithSearch and WithFilters by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1666
+- Allow nullable search/filter values by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1666
+
+## [v3.2.0] - 2024-01-04
 ### Tweaks
 - Migration to new Core Traits, and de-duplication of code by @lrljoe in https://github.com/rappasoft/laravel-livewire-tables/pull/1623 
 

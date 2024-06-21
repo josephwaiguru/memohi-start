@@ -14,8 +14,12 @@
 
         <x-livewire-tables::table>
             <x-slot name="thead">
-                <x-livewire-tables::table.th.reorder x-cloak x-show="currentlyReorderingStatus" />
-                <x-livewire-tables::table.th.bulk-actions :displayMinimisedOnReorder="true" />
+                @if($this->getCurrentlyReorderingStatus())
+                    <x-livewire-tables::table.th.reorder x-cloak x-show="currentlyReorderingStatus" />
+                @endif
+                @if($this->bulkActionsAreEnabled() && $this->hasBulkActions())
+                    <x-livewire-tables::table.th.bulk-actions :displayMinimisedOnReorder="true" />
+                @endif
                 <x-livewire-tables::table.th.collapsed-columns />
 
                 @foreach($columns as $index => $column)
@@ -49,7 +53,11 @@
                         @continue($column->isReorderColumn() && !$this->getCurrentlyReorderingStatus() && $this->getHideReorderColumnUnlessReorderingStatus())
 
                         <x-livewire-tables::table.td wire:key="{{ $tableName . '-' . $row->{$this->getPrimaryKey()} . '-datatable-td-' . $column->getSlug() }}"  :column="$column" :colIndex="$colIndex">
-                            {{ $column->renderContents($row) }}
+                            @if($column->isHtml())                            
+                                {!! $column->renderContents($row) !!}
+                            @else
+                                {{ $column->renderContents($row) }}
+                            @endif
                         </x-livewire-tables::table.td>
                     @endforeach
                 </x-livewire-tables::table.tr>
